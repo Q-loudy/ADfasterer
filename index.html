@@ -57,6 +57,7 @@
 
     // Initialize display when window loads
     window.addEventListener('load', function () {
+      globalSpeedFactor = parseFloat(localStorage.getItem("globalSpeedFactor")) || 1;
       updateSpeedDisplay();
     });
   </script>
