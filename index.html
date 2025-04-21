@@ -3,22 +3,21 @@
 
 <head>
   <script type="text/javascript">
-    // Changed from const to let to allow modification
-    let globalSpeedFactor = 1;
+    let globalSpeedFactor = parseFloat(localStorage.getItem("globalSpeedFactor")) || 1; 
     const getGlobalSpeedFactor = () => { return Pelle.isDoomed ? Math.sqrt(globalSpeedFactor) : globalSpeedFactor; };
 
-    // Add functions to control the speed factor
     function increaseSpeed() {
       globalSpeedFactor *= 10;
+      localStorage.setItem("globalSpeedFactor", globalSpeedFactor);
       updateSpeedDisplay();
     }
 
     function decreaseSpeed() {
       globalSpeedFactor /= 10;
+      localStorage.setItem("globalSpeedFactor", globalSpeedFactor);
       updateSpeedDisplay();
     }
 
-    // Format numbers using K, M, B, etc.
     function formatNumber(num) {
       if (num < 1000) return num.toString();
     
