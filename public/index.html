@@ -2,8 +2,63 @@
 <html lang="en">
 <head>
   <script type="text/javascript">
-    const globalSpeedFactor=1000;
+    // Changed from const to let to allow modification
+    let globalSpeedFactor = 1;
     const getGlobalSpeedFactor=()=>{return Pelle.isDoomed?Math.sqrt(globalSpeedFactor):globalSpeedFactor;};
+    
+    // Add functions to control the speed factor
+    function increaseSpeed() {
+      globalSpeedFactor *= 10;
+      updateSpeedDisplay();
+    }
+    
+    function decreaseSpeed() {
+      globalSpeedFactor /= 10;
+      updateSpeedDisplay();
+    }
+    
+    // Format numbers using k, M, B, etc.
+    function formatNumber(num) {
+      if (num < 1000) return num.toString();
+      
+      const units = ["", "K", "M", "B", "T", "Qa", "Qi", "Sx", "Sp", "Oc"];
+      const unit = Math.floor(Math.log10(num) / 3);
+      const value = num / Math.pow(1000, unit);
+      
+      // Display with appropriate precision
+      let formattedValue;
+      if (value < 10) {
+        formattedValue = value.toFixed(2);
+      } else if (value < 100) {
+        formattedValue = value.toFixed(1);
+      } else {
+        formattedValue = value.toFixed(0);
+      }
+      
+      // Remove trailing zeros after decimal point
+      formattedValue = formattedValue.replace(/\.0+$/, '');
+      
+      return formattedValue + units[unit];
+    }
+    
+    function updateSpeedDisplay() {
+      const display = document.getElementById('speed-factor-display');
+      if (display) {
+        // Use our formatter for large values, direct value for small ones
+        if (globalSpeedFactor >= 1000) {
+          display.textContent = formatNumber(globalSpeedFactor);
+        } else if (globalSpeedFactor < 0.01) {
+          display.textContent = globalSpeedFactor.toExponential(2);
+        } else {
+          display.textContent = globalSpeedFactor;
+        }
+      }
+    }
+    
+    // Initialize display when window loads
+    window.addEventListener('load', function() {
+      updateSpeedDisplay();
+    });
   </script>
   <meta charset="utf-8">
   <title>Antimatter FAST Dimensions</title>
@@ -24,8 +79,42 @@
   <link rel="stylesheet" type="text/css" href="stylesheets/time-studies.css">
   <link rel="stylesheet" type="text/css" href="stylesheets/tooltips.css">
   <link rel="stylesheet" type="text/css" href="stylesheets/vis-network.css">
+  
+  <style>
+    #speed-controls {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 10px;
+      border-radius: 5px;
+      z-index: 9999;
+      color: white;
+      font-family: 'PT Mono', monospace;
+    }
+    
+    #speed-controls button {
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 5px 10px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 14px;
+      margin: 2px;
+      cursor: pointer;
+      border-radius: 3px;
+      font-family: 'PT Mono', monospace;
+    }
+    
+    #speed-factor-display {
+      font-weight: bold;
+      font-size: 16px;
+      margin: 0 10px;
+    }
+  </style>
 </head>
-
 <body>
   <div id="browser-warning">
     Your browser is not supported.
@@ -34,6 +123,15 @@
   </div>
   <div id="loading"></div>
   <div id="ui"></div>
+  
+  <!-- Add speed controls -->
+  <div id="speed-controls">
+    <span>Speed Factor: </span>
+    <span id="speed-factor-display">1</span>
+    <button onclick="increaseSpeed()">×10</button>
+    <button onclick="decreaseSpeed()">÷10</button>
+  </div>
+  
   <div id="background-animations">
     <div class="videocontainer videocontainer--background">
       <video autoplay muted loop id="stars">
