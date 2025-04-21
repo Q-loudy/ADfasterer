@@ -18,28 +18,27 @@
       updateSpeedDisplay();
     }
 
-    // Format numbers using k, M, B, etc.
+    // Format numbers using K, M, B, etc.
     function formatNumber(num) {
       if (num < 1000) return num.toString();
-
+    
       const units = ["", "K", "M", "B", "T", "Qa", "Qi", "Sx", "Sp", "Oc"];
       const unit = Math.floor(Math.log10(num) / 3);
       const value = num / Math.pow(1000, unit);
-
+    
       // Display with appropriate precision
       let formattedValue;
       if (value < 10) {
-        git
         formattedValue = value.toFixed(2);
       } else if (value < 100) {
         formattedValue = value.toFixed(1);
       } else {
         formattedValue = value.toFixed(0);
       }
-
+    
       // Remove trailing zeros after decimal point
       formattedValue = formattedValue.replace(/\.0+$/, '');
-
+    
       return formattedValue + units[unit];
     }
 
