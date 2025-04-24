@@ -2,29 +2,28 @@
 <html lang="en">
 <head>
   <script type="text/javascript">
-    // Changed from const to let to allow modification
-    let globalSpeedFactor = 1;
-    const getGlobalSpeedFactor=()=>{return Pelle.isDoomed?Math.sqrt(globalSpeedFactor):globalSpeedFactor;};
-    
-    // Add functions to control the speed factor
+    let globalSpeedFactor = parseFloat(localStorage.getItem("globalSpeedFactor")) || 1; 
+    const getGlobalSpeedFactor = () => { return Pelle.isDoomed ? Math.sqrt(globalSpeedFactor) : globalSpeedFactor; };
+
     function increaseSpeed() {
       globalSpeedFactor *= 10;
+      localStorage.setItem("globalSpeedFactor", globalSpeedFactor);
       updateSpeedDisplay();
     }
-    
+
     function decreaseSpeed() {
       globalSpeedFactor /= 10;
+      localStorage.setItem("globalSpeedFactor", globalSpeedFactor);
       updateSpeedDisplay();
     }
-    
-    // Format numbers using k, M, B, etc.
+
     function formatNumber(num) {
       if (num < 1000) return num.toString();
-      
-      const units = ["", "K", "M", "B", "T", "Qa", "Qi", "Sx", "Sp", "Oc"];
+    
+      const units = ["", "K", "M", "B", "T", "Qa", "Qi", "Sx", "Sp", "Oc", "No"];
       const unit = Math.floor(Math.log10(num) / 3);
       const value = num / Math.pow(1000, unit);
-      
+    
       // Display with appropriate precision
       let formattedValue;
       if (value < 10) {
@@ -34,13 +33,13 @@
       } else {
         formattedValue = value.toFixed(0);
       }
-      
+    
       // Remove trailing zeros after decimal point
       formattedValue = formattedValue.replace(/\.0+$/, '');
-      
-      return formattedValue + units[unit];
-    }
     
+      return formattedValue + (units[unit] || "e" + (unit * 3));
+    }
+
     function updateSpeedDisplay() {
       const display = document.getElementById('speed-factor-display');
       if (display) {
@@ -54,9 +53,10 @@
         }
       }
     }
-    
+
     // Initialize display when window loads
-    window.addEventListener('load', function() {
+    window.addEventListener('load', function () {
+      globalSpeedFactor = parseFloat(localStorage.getItem("globalSpeedFactor")) || 1;
       updateSpeedDisplay();
     });
   </script>
