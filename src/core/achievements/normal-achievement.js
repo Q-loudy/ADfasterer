@@ -138,7 +138,7 @@ export const Achievements = {
     return GameCache.achievementPeriod.value;
   },
     
-  let overrideAutoAchieve = 0;
+  export let overrideAutoAchieve = 0;
   autoAchieveUpdate(diff) {
     if (overrideAutoAchieve === 0 && !PlayerProgress.realityUnlocked()) return;
     if (!player.reality.autoAchieve || RealityUpgrade(8).isLockingMechanics) {
