@@ -2,7 +2,6 @@ import { GameMechanicState } from "../game-mechanics";
 
 import { SteamRuntime } from "@/steam";
 
-export let overrideAutoAchieve = 0;
 class AchievementState extends GameMechanicState {
   constructor(config) {
     super(config);
@@ -140,7 +139,7 @@ export const Achievements = {
   },
     
   autoAchieveUpdate(diff) {
-    if (overrideAutoAchieve === 0 && !PlayerProgress.realityUnlocked()) return;
+    if (!PlayerProgress.realityUnlocked()) return;
     if (!player.reality.autoAchieve || RealityUpgrade(8).isLockingMechanics) {
       player.reality.achTimer = Math.clampMax(player.reality.achTimer + diff, this.period);
       return;
