@@ -25,7 +25,7 @@ class AchievementState extends GameMechanicState {
   }
 
   get isPreReality() {
-    return this.row < 15;
+    return this.row < 18;
   }
 
   get isPrePelle() {
