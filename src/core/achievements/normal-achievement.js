@@ -139,14 +139,12 @@ export const Achievements = {
   },
     
   autoAchieveUpdate(diff) {
-    // if (!PlayerProgress.realityUnlocked()) return;
+    if (!PlayerProgress.realityUnlocked()) return;
     if (!player.reality.autoAchieve || RealityUpgrade(8).isLockingMechanics) {
       player.reality.achTimer = Math.clampMax(player.reality.achTimer + diff, this.period);
       return;
     }
-    
-    // if (Achievements.preReality.every(a => a.isUnlocked)) return;
-    if (Achievements.prePelle.every(a => a.isUnlocked)) return;
+    if (Achievements.preReality.every(a => a.isUnlocked)) return;
     
     player.reality.achTimer += diff;
     if (player.reality.achTimer < this.period) return;
