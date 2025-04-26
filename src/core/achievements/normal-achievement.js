@@ -139,8 +139,7 @@ export const Achievements = {
   },
 
   autoAchieveUpdate(diff) {
-    let overrideAutoAchieve = overrideAutoAchieve ?? 0;
-    if (overrideAutoAchieve === 0 && !PlayerProgress.realityUnlocked()) return;
+    // if (!PlayerProgress.realityUnlocked()) return;
     if (!player.reality.autoAchieve || RealityUpgrade(8).isLockingMechanics) {
       player.reality.achTimer = Math.clampMax(player.reality.achTimer + diff, this.period);
       return;
