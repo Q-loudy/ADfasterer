@@ -146,7 +146,7 @@ export const Achievements = {
     }
     
     // if (Achievements.preReality.every(a => a.isUnlocked)) return;
-    if (!PlayerProgress.realityUnlocked()) return;
+    if (Achievements.prePelle.every(a => a.isUnlocked)) return;
     
     player.reality.achTimer += diff;
     if (player.reality.achTimer < this.period) return;
