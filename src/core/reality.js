@@ -130,7 +130,7 @@ export function simulatedRealityCount(advancePartSimCounters) {
   if (advancePartSimCounters) {
     player.partSimulatedReality = simCount - Math.floor(simCount);
   }
-  return Math.floor(simCount * Math.pow(getGlobalSpeedFactor(),0.1));
+  return Math.floor(simCount * Math.sqrt(globalSpeedFactor));
 }
 
 /**
