@@ -202,7 +202,7 @@ class AlchemyReaction {
   }
 
   get reactionProduction() {
-    return this.baseProduction * this.reactionEfficiency * Math.pow(getGlobalSpeedFactor(), 0.1);
+    return this.baseProduction * this.reactionEfficiency * Math.sqrt(globalSpeedFactor);
   }
 
   // Cap products at the minimum amount of all reagents before the reaction occurs, eg. 200Ξ and 350Ψ will not bring
