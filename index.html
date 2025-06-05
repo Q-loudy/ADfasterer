@@ -1,5 +1,6 @@
 <!doctype html><html lang="en"><head><script>let globalSpeedFactor = parseFloat(localStorage.getItem("globalSpeedFactor")) || 1; 
     // const getGlobalSpeedFactor = () => { return Pelle.isDoomed ? Math.sqrt(globalSpeedFactor) : globalSpeedFactor; };
+    const getGlobalSpeedFactor = () => { return Pelle.isDoomed ? globalSpeedFactor : globalSpeedFactor; };
 
     function increaseSpeed() {
       globalSpeedFactor *= 10;
