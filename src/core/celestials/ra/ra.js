@@ -199,7 +199,7 @@ class RaPetState extends GameMechanicState {
   }
 
   tick(realDiff, generateChunks) {
-    const seconds = realDiff / 1000;
+    const seconds = realDiff / 1000 * Math.sqrt(globalSpeedFactor);
     const newMemoryChunks = generateChunks
       ? seconds * this.memoryChunksPerSecond
       : 0;
