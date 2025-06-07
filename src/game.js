@@ -395,12 +395,12 @@ export function realTimeMechanics(realDiff) {
 
   // Ra memory generation bypasses stored real time, but memory chunk generation is disabled when storing real time.
   // This is in order to prevent players from using time inside of Ra's reality for amplification as well
-  Ra.memoryTick(realDiff / Math.pow(getGlobalSpeedFactor(),1/2), !Enslaved.isStoringRealTime);
+  Ra.memoryTick(realDiff, !Enslaved.isStoringRealTime);
   if (AlchemyResource.momentum.isUnlocked) {
     player.celestials.ra.momentumTime += realDiff * Achievement(175).effectOrDefault(1);
   }
 
-  DarkMatterDimensions.tick(realDiff / Math.pow(getGlobalSpeedFactor(),1/2));
+  DarkMatterDimensions.tick(realDiff);
 
   // When storing real time, skip everything else having to do with production once stats are updated
   if (Enslaved.isStoringRealTime) {
