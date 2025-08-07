@@ -15,17 +15,7 @@ if (GlobalErrorHandler.handled) {
   throw new Error("Initialization failed");
 }
 GlobalErrorHandler.cleanStart = true;
-
-console.log(typeof Achievements); // Should show "object", not "undefined"
-console.log(window.Achievements); // Try accessing through window
-console.log(this.Achievements); // Try accessing through this
-
-  // Look for achievement-related objects
-console.log(Object.keys(window).filter(key => key.toLowerCase().includes('achieve')));
-
-// Or look for game-related objects
-console.log(Object.keys(window).filter(key => key.toLowerCase().includes('game')));
-    
+   
 export function playerInfinityUpgradesOnReset() {
 
   const infinityUpgrades = new Set(
