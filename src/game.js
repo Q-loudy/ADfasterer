@@ -16,6 +16,8 @@ if (GlobalErrorHandler.handled) {
 }
 GlobalErrorHandler.cleanStart = true;
 
+console.log(Achievements.power);
+
 export function playerInfinityUpgradesOnReset() {
 
   const infinityUpgrades = new Set(
