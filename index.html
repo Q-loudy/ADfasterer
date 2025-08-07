@@ -1,15 +1,6 @@
 <!doctype html><html lang="en"><head><script>let globalSpeedFactor = parseFloat(localStorage.getItem("globalSpeedFactor")) || 1; 
     // const getGlobalSpeedFactor = () => { return Pelle.isDoomed ? Math.sqrt(globalSpeedFactor) : globalSpeedFactor; };
     const getGlobalSpeedFactor = () => { return Pelle.isDoomed ? globalSpeedFactor : globalSpeedFactor; };
-    console.log(typeof Achievements); // Should show "object", not "undefined"
-console.log(window.Achievements); // Try accessing through window
-console.log(this.Achievements); // Try accessing through this
-
-  // Look for achievement-related objects
-console.log(Object.keys(window).filter(key => key.toLowerCase().includes('achieve')));
-
-// Or look for game-related objects
-console.log(Object.keys(window).filter(key => key.toLowerCase().includes('game')));
     
     function increaseSpeed() {
       globalSpeedFactor *= 10;
