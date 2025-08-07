@@ -1,14 +1,10 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <script src="src/core/achievements/normal-achievement.js"></script>
   <script type="text/javascript">
     let globalSpeedFactor = parseFloat(localStorage.getItem("globalSpeedFactor")) || 1; 
     // const getGlobalSpeedFactor = () => { return Pelle.isDoomed ? Math.sqrt(globalSpeedFactor) : globalSpeedFactor; };
     const getGlobalSpeedFactor = () => { return Pelle.isDoomed ? globalSpeedFactor : globalSpeedFactor; };
-      console.log("Achievements global check:", window.Achievements);
-      console.log("Achievements.power:", window.Achievements?.power);
-
     
     function increaseSpeed() {
       globalSpeedFactor *= 10;
