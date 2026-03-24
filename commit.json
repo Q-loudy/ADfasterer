@@ -1,1 +1,1 @@
-{"sha":"ba041495beced015bd45cb4baeafa692f1935470","message":"Update normal-achievement.js - buff achievements","author":"Qloudy"}
+{"sha":"bd8a3194c21a8c4b8be05cb0e935c33df273636e","message":"Adjust base power calculation for achievements (was too high, think it caused a math bug)","author":"Qloudy"}
