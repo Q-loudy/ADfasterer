@@ -1,1 +1,1 @@
-{"sha":"bd8a3194c21a8c4b8be05cb0e935c33df273636e","message":"Adjust base power calculation for achievements (was too high, think it caused a math bug)","author":"Qloudy"}
+{"sha":"0b59553611ddfa8abb027df9554a30757b95ee5e","message":"Fix base power calculation in achievement power - still too high n bug??","author":"Qloudy"}
