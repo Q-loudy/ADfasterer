@@ -49,7 +49,8 @@ export const dilationTimeStudies = [
     cost: 1,
     requirement: () => TimeStudy.timeDimension(8).isBought &&
       player.records.thisReality.maxEP.exponent >= 4000 &&
-      (Perk.firstPerk.isBought || Achievements.preReality.every(a => a.isUnlocked)) &&
+      (Perk.firstPerk.isBought ||
+        Achievements.preRealityRows.countWhere(row => row.every(a => a.isUnlocked)) >= 13) &&
       !Pelle.isDoomed
   }
 ];
